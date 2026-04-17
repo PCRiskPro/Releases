@@ -84,7 +84,7 @@ Invoke-WebRequest -Uri $url -OutFile $dest
 Start-Process -FilePath $dest -ArgumentList "/VERYSILENT /NORESTART" -Wait
 ```
 
-Full RMM deployment guides for ConnectWise Automate, Datto RMM, NinjaOne, and Kaseya will be published as individual guides closer to commercial launch.
+**[Full RMM Deployment Guide](./docs/RMM_Deployment_Guide.md)** — Detailed documentation covering silent install, CLI scanning (v2.0.0 preview), Report Aggregator (v2.0.0 preview), and platform-specific scripts for ConnectWise Automate, Datto RMM, NinjaOne, Kaseya, and generic PowerShell.
 
 ---
 
@@ -133,6 +133,10 @@ A **perpetual free trial** is available with feature limitations (scan visibilit
 
 - [Product datasheet (PDF)](./datasheets/PCRiskPro_Datasheet_2026.pdf)
 - [Brand guidelines (PDF)](./datasheets/PCRiskPro_Brand_Guidelines.pdf)
+
+### For IT administrators and MSPs
+
+- [RMM Deployment Guide](./docs/RMM_Deployment_Guide.md)
 
 ### Legal documents
 
