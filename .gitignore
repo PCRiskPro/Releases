@@ -1,0 +1,12 @@
+# Installers are uploaded as GitHub Release assets, not committed to the repo
+*.exe
+*.msi
+*.zip
+
+# Editor temp files
+~$*
+.DS_Store
+Thumbs.db
+
+# OS-generated
+desktop.ini
