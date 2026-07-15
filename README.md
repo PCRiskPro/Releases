@@ -78,7 +78,9 @@ PCRiskPro_Setup_<version>.exe /SILENT /NORESTART /LOG=install.log
 **Example — Push via RMM with PowerShell:**
 
 ```powershell
-$url = "https://github.com/PCRiskPro/Releases/releases/latest/download/PCRiskPro_Setup_1.9.9.exe"
+# Installer asset names are versioned — set this to the filename shown on the Releases page
+$file = "PCRiskPro_Setup_<version>.exe"
+$url  = "https://github.com/PCRiskPro/Releases/releases/latest/download/$file"
 $dest = "$env:TEMP\PCRiskPro_Setup.exe"
 Invoke-WebRequest -Uri $url -OutFile $dest
 Start-Process -FilePath $dest -ArgumentList "/VERYSILENT /NORESTART" -Wait
@@ -102,7 +104,7 @@ All official releases are digitally signed with a **Certum OV code signing certi
 ### Method 2 — PowerShell
 
 ```powershell
-Get-AuthenticodeSignature .\PCRiskPro_Setup_1.9.9.exe | Format-List *
+Get-AuthenticodeSignature .\PCRiskPro_Setup_<version>.exe | Format-List *
 ```
 
 Expected output: `Status: Valid`, signed by `CN=PCRiskpro Limited`.
@@ -113,15 +115,16 @@ Expected output: `Status: Valid`, signed by `CN=PCRiskpro Limited`.
 
 ## Licensing
 
-PCRiskPro is commercial software available under three tiers:
+PCRiskPro is commercial software available under four paid tiers:
 
 | Tier | Price | Target customer | Devices per licence |
 |------|-------|-----------------|---------------------|
-| **Solo** | £95/year | Small businesses (self-assessment) | 1 |
-| **SME** | £795/year | Internal IT teams (up to 10 machines) | 10 |
-| **MSP / Partner** | £1,995/year | MSPs and IT consultancies (up to 100 client endpoints, white-label reporting, commercial use permitted) | 100 |
+| **Solo Licence** | £95/year | Individuals and micro-businesses (self-assessment) | 1 |
+| **Professional Licence** | £795/year | Internal IT teams (endpoint scanning) | Up to 10 |
+| **Enterprise Licence** | £995/year (launch pricing) | Organisations needing SharePoint, OneDrive for Business, Teams and network-share data discovery | Up to 10 (one tenant) |
+| **Partner Licence** | £2,995/year (launch pricing) | MSPs and IT consultancies (multi-tenant client environments, commercial use permitted) | Up to 100 (up to 5 client tenants) |
 
-A **perpetual free trial** is available with feature limitations (scan visibility capped, export restricted). Purchase a licence to unlock full functionality.
+A perpetual **Free Edition** is available with feature limitations (scan visibility capped, export restricted). Purchase a licence to unlock full functionality.
 
 **Purchase and manage licences at [pcriskpro.com](https://pcriskpro.com).**
 
@@ -161,7 +164,7 @@ A **perpetual free trial** is available with feature limitations (scan visibilit
 | Technical support | support@pcriskpro.com |
 | Security disclosure | security@pcriskpro.com |
 
-Response targets: Solo tier — 48 hours (business days). SME tier — 24 hours. MSP tier — 8 hours.
+Response targets (business days): Solo — 48 hours. Professional and Enterprise — 24 hours. Partner — 8 hours.
 
 ---
 
@@ -182,7 +185,7 @@ No. PCRiskPro is commercial software. This repository hosts the signed installer
 GitHub provides a reliable, globally distributed CDN for software distribution, trusted by IT administrators and verifiable by signature. This removes the need for self-hosted download infrastructure and ensures consistent availability.
 
 **Can I distribute PCRiskPro to my clients?**
-Only the MSP / Partner tier permits commercial distribution and resale. Solo and SME tiers are restricted to internal use by the licensee. See the [EULA](./legal/EULA.md) for full terms.
+Only the Partner Licence permits commercial distribution and resale. Solo, Professional, and Enterprise licences are restricted to internal use by the licensee. See the [EULA](./legal/EULA.md) for full terms.
 
 **Does PCRiskPro work offline?**
 Most functionality works offline after first activation. An internet connection is required for: initial licence activation, CVE database updates (cached 24 hours), and periodic licence re-validation.
